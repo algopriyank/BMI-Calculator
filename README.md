@@ -6,7 +6,7 @@ The BMI (Body Mass Index) Calculator is a simple iOS application developed using
 
 Solarized Dark             |  Solarized Ocean           | Another Theme
 :-------------------------:|:-------------------------:|:-------------------------:
-![App Brewery Banner](Documentation/screen1)   |  ![App Brewery Banner](Documentation/screen2) | ![Alt Text](Documentation/demo.gif)
+![App Brewery Banner](Documentation/screen1.png)   |  ![App Brewery Banner](Documentation/screen2.png) | ![Alt Text](Documentation/demo.gif)
 
 
 
