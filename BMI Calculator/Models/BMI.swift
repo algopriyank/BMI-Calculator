@@ -1,15 +1,13 @@
-//
-//  BMI.swift
-//  BMI Calculator
-//
-//  Created by Angela Yu on 29/08/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
-//
-
+// Defines the structure to hold BMI-related data.
 import UIKit
 
 struct BMI {
+    // Stores the calculated BMI value
     let value: Float
-    let advice: String
+    
+    // Provides advice based on the BMI value
+    let advide: String
+    
+    // Determines the color representation based on the BMI value
     let color: UIColor
 }

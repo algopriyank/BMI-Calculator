@@ -1,39 +1,43 @@
-//
-//  CalculatorBrain.swift
-//  BMI Calculator
-//
-//  Created by Angela Yu on 28/08/2019.
-//  Copyright © 2019 Angela Yu. All rights reserved.
-//
-
+// Handles all the calculations related to BMI.
 import UIKit
 
+//this will be the brain for all calculations performed
 struct CalculatorBrain {
     
+    // Declares an optional variable `bmi` of type `BMI`
     var bmi: BMI?
     
-    func getBMIValue() -> String {
-        let bmiTo1DecimalPlace = String(format: "%.1f", bmi?.value ?? 0.0)
-        return bmiTo1DecimalPlace
-    }
-    
-    func getAdvice() -> String {
-        return bmi?.advice ?? "No advice"
-    }
-    
-    func getColor() -> UIColor {
-        return bmi?.color ?? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    }
-    
-    mutating func calculateBMI(height: Float, weight: Float) {
-        let bmiValue = weight / (height * height)
-
-        if bmiValue < 18.5 {
-            bmi = BMI(value: bmiValue, advice: "Eat more pies!", color: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1))
-        } else if bmiValue < 24.9 {
-            bmi = BMI(value: bmiValue, advice: "Fit as a fiddle!", color: #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1))
-        } else {
-            bmi = BMI(value: bmiValue, advice: "Eat less pies!", color: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
+    // Calculates the BMI based on the provided height and weight
+    mutating func calculateBmi(height: Float, weight: Float) {
+        let bmiValue = weight / pow(height, 2)
+        
+        // Divides BMI into 3 ranges for underweight, fit, and overweight, respectively
+        if bmiValue < 18.5 {    //underweight
+            bmi = BMI(value: bmiValue, advide: "comsume more calories", color: .red)
         }
+        else if bmiValue < 25 {     //fit
+            bmi = BMI(value: bmiValue, advide: "fit as a fiddle!", color: .blue)
+        }
+        else {      //overweight
+            bmi = BMI(value: bmiValue, advide: "workout more often!", color: .orange)
+        }
+    }
+    
+    //this method will return the calculated bmi value (string)
+    func getBmiValue() -> String {
+        
+        let bmiDecimal = String(format: "%.1f", bmi?.value ?? 0.0)
+        return bmiDecimal
+    }
+    
+    // Retrieves advice based on the calculated BMI value
+    func getAdvice() -> String {
+        //bmi?.advide = if 'bmi' is not nil, then access its advice, else return 'nil'
+        return bmi?.advide ?? "No advice"   //provides a default value No advice in case the optional bmi?.advice is nil.
+    }
+    
+    // Retrieves the color representation based on the calculated BMI value
+    func getColor() -> UIColor {
+        return bmi?.color ?? .white //provides a default color white in case the optional bmi?.color is nil.
     }
 }
